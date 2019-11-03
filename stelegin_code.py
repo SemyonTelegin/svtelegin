@@ -1,5 +1,6 @@
 import vk_api
 from vk_api.longpoll import VkLongPoll
+from vk_api import VkUpload
 import time
 import random
 import re
@@ -39,10 +40,8 @@ class Bot:
         self.token = str(token)
 
     def massage(self, resp, id, att):             #Отправляет сообщение
-        upload = vk_api.VkUpload(vk)
-        photo = upload.photo(r"C:\Users\iMac\PycharmProjects\Екг3\imgp.png", album_id=267125590, group_id=186913181)
         try:
-            vk.method('messages.send', {'user_id': id, 'message': response[ran], 'random_id': random.randint(1, 2147483647),"attachment":att})
+            vk.method('messages.send', {'user_id': id, 'message': resp, 'random_id': random.randint(1, 2147483647),"attachment":att})
         except:
             vk.method("messages.send",
                       {"peer_id": id, "message": "Не удалось распознать запрос",
@@ -68,6 +67,7 @@ session = requests.Session()
 vk = vk_api.VkApi(token=token)
 vk._auth_token()
 longpoll = VkLongPoll(vk)
+upload = VkUpload(vk)
 while True:
     try:
         messages = vk.method("messages.getConversations", {"offset": 0, "count": 20, "filter": "unanswered"})
