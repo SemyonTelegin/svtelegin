@@ -59,7 +59,7 @@ class Saver:
         out.close
 
 
-token = "e02ab112e4762f188d0bc714ec61edc32d36fdb3ea2144ecdd2bc0ef2bcc25e1db691089011ee46012710"
+token = "###############################"          #Уникальный токен. Я не могу его показывать
 base_url = 'https://yandex.ru/images/search?text='
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'}
 B=Bot(token)
